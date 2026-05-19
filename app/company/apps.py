@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+
+class CompanyConfig(AppConfig):
+    name = 'company'
+    verbose_name = 'Company'
+    verbose_name_plural = 'Companies'
