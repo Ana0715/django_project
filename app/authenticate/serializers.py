@@ -65,25 +65,6 @@ class LoginSerializer(serializers.Serializer):
 
 
 
-
-# class SupplierSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Supplier
-#         fields = '__all__'
-
-
-# class SupplySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Supply
-#         fields = '__all__'
-
-
-# class ProductSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Product
-#         fields = '__all__'
-
-
 # class SaleSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Sale

@@ -232,7 +232,7 @@ class TakeToken(APIView):
         400: OpenApiResponse(description='Неверные данные'),
         403: OpenApiResponse(description='Нет прав на добавление сотрудников'),
         404: OpenApiResponse(description='Пользователь не найден'),
-        409: OpenApiResponse(description='Пользователь уже владеет другой компанией')
+        409: OpenApiResponse(description='Пользователь уже принадлежит другой компанией')
     }
 )
 class AddEmployeeView(APIView):
@@ -251,12 +251,16 @@ class AddEmployeeView(APIView):
         except User.DoesNotExist:
             return Response({'error': 'Пользователь с таким email не найден'}, status=status.HTTP_404_NOT_FOUND)
         
+        if employee.company and employee.company != request.user.company:
+            return Response({'error': 'Пользователь уже принадлежит другой компании'}, status=status.HTTP_409_CONFLICT)
+        
         if employee.company:
             return Response({'error': 'Пользователь уже является сотрудником компании'}, status=status.HTTP_409_CONFLICT)
         
         employee.company = request.user.company
         employee.save()
         return Response({'message': 'Сотрудник успешно добавлен в компанию'}, status=status.HTTP_200_OK)
+
 
 
 

@@ -34,7 +34,7 @@ class CreateStorageView(APIView):
     def post(self, request):
         company = request.user.company
         if not company:
-            return Response({'error': 'Пользователь не является владельцем компании'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Пользователь не является сотрудником компании'}, status=status.HTTP_400_BAD_REQUEST)
 
         if Storage.objects.filter(company=company).exists():
             return Response({'error': 'Компания уже имеет склад'}, status=status.HTTP_400_BAD_REQUEST)

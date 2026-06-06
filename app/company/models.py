@@ -1,12 +1,11 @@
 from django.db import models
-
 from django.core.exceptions import ValidationError
 
 
 def validate_inn(value):
     if not value.isdigit():
         raise ValidationError('ИНН должен содержать только цифры')
-    if len(value) not in [8, 10, 12]:
+    if len(value) not in [10, 12]:
         raise ValidationError('ИНН должен содержать 10 или 12 цифр')
 
 

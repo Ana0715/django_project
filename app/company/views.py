@@ -43,12 +43,6 @@ class CreateCompanyView(APIView):
                 status=status.HTTP_403_FORBIDDEN
             )
         
-        if request.user.is_company_owner:
-            return Response(
-                {'error': 'Пользователь уже владеет компанией'},
-                status=status.HTTP_403_FORBIDDEN
-            )
-        
         serializer = CompanySerializer(data=request.data)
         if serializer.is_valid():
             # Связываем компанию с пользователем
