@@ -23,10 +23,6 @@ class GetSuppliesListView(APIView):
         company = request.user.company
         if not company:
             raise PermissionDenied("Пользователь не принадлежит компании")
-        
-        # company = getattr(request.user, 'company', None)
-        # if not company:
-        #     raise PermissionDenied("Пользователь не принадлежит ни одной компании")
 
         supplies = Supply.objects.filter(supplier__company=company).select_related('supplier').prefetch_related('supply_products__product')
         serializer = SupplySerializer(supplies, many=True)
@@ -71,7 +67,6 @@ class CreateSupplyView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        # if not getattr(request.user, 'company', None):
         if not request.user.company:
             return Response({'detail': 'Пользователь не принадлежит ни одной компании'}, status=status.HTTP_403_FORBIDDEN)
         
@@ -99,7 +94,6 @@ class GetSupplyView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, supply_id):
-        # company = getattr(request.user, 'company', None)
         company = request.user.company
         if not company:
             raise PermissionDenied("Пользователь не принадлежит компании")
