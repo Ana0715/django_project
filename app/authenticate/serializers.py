@@ -50,34 +50,3 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError('Необходимо указать email и пароль')
 
         return data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class SaleSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Sale
-#         fields = '__all__'
-
-
-# class ProductSaleSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Product_sale
-#         fields = '__all__'
-
-
-# class SupplyProductSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Supply_product
-#         fields = '__all__'

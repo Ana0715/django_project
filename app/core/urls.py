@@ -16,6 +16,7 @@ urlpatterns = [
     path(f'{BASE_API_V1_PREFIX}/suppliers/', include('supplier.urls')),
     path(f'{BASE_API_V1_PREFIX}/supplies/', include('supply.urls')),
     path(f'{BASE_API_V1_PREFIX}/products/', include('product.urls')),
+    path(f'{BASE_API_V1_PREFIX}/sales/', include('sale.urls')),
     path(f'{BASE_API_V1_PREFIX}/schema/', SpectacularAPIView.as_view(), name='schema'),
     path(f'{BASE_API_V1_PREFIX}/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path(f'{BASE_API_V1_PREFIX}/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),

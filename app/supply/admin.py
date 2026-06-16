@@ -19,7 +19,7 @@ class SupplyAdmin(admin.ModelAdmin):
 class SupplyProductAdmin(admin.ModelAdmin):
     list_display = ('supply', 'product', 'quantity')
     list_filter = ('supply__delivery_date', )
-    readonly_fields = ['supply', 'product', 'quantity']
+    readonly_fields = ('supply', 'product', 'quantity',)
     
     def has_change_permission(self, request, obj=None):
         return False
